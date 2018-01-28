@@ -1,0 +1,6 @@
+---
+- hosts: windows
+  roles:
+    - common
+    - windows_iot_core
+...

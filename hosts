@@ -1,0 +1,9 @@
+---
+all:
+  hosts: {}
+  children:
+    windows:
+      hosts:
+        windows10:
+          ansible_host: 10.211.55.5
+...

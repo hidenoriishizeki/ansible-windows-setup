@@ -1,0 +1,12 @@
+---
+############################################################
+# common handlers
+############################################################
+
+- name: Reboot windows after update
+  win_reboot:
+    shutdown_timeout: 3600
+    reboot_timeout: 3600
+  when: windown_install_updates_result.reboot_required
+  listen: restart windows system
+...

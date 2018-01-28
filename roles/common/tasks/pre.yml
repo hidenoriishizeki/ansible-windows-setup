@@ -1,0 +1,29 @@
+---
+############################################################
+# prep tasks for windows role
+############################################################
+
+- name: Role variable validation
+  assert: 
+    that: 
+      - ansible_user is defined
+      - common_download_path is defined
+      - common_delete_download_path is defined
+  tags:
+    - common
+    - common.pre
+    - common.pre.validation
+    - common.install
+    - common.install.software
+
+- name: Create download directory
+  win_file:
+    path: "{{ common_download_path }}"
+    state: directory
+  tags:
+    - common
+    - common.pre
+    - common.pre.downloaddir
+    - common.install
+    - common.install.software
+...

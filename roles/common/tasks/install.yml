@@ -1,0 +1,42 @@
+---
+############################################################
+# install windows updates
+############################################################
+
+# win_updates will be fixed with ansible 2.5.x
+- name: Install windows updates
+  win_updates:
+    category_names: ['SecurityUpdates','CriticalUpdates','UpdateRollups', 'Updates', 'DefinitionUpdates']
+  notify: restart windows system
+  register: windown_install_updates_result
+  ignore_errors: yes # ToDo: remove after ansible 2.5.x has been released
+  tags:
+    - common
+    - common.install
+    - common.install.update
+
+# ToDo: remove after ansible 2.5.x has been released
+- name: Print windows update statement
+  debug: var=result
+  tags:
+    - common
+    - common.install
+    - common.install.update
+
+############################################################
+# install software with chocoloatey
+############################################################
+
+- name: Install software with chocolatey
+  win_chocolatey:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - firefox
+    - googlechrome
+    - visualstudiocode
+  tags:
+    - common
+    - common.install
+    - common.install.software
+...

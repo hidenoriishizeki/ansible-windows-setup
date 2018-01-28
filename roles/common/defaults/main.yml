@@ -1,0 +1,4 @@
+---
+common_download_path: "C:\\Users\\{{ ansible_user }}\\Downloads\\ansible"
+common_delete_download_path: false
+...

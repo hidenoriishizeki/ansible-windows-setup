@@ -1,0 +1,15 @@
+---
+############################################################
+# windows 10 iot core dashboard
+############################################################
+
+- name: Download windows 10 iot core dashboard
+  win_get_url:
+    url: http://go.microsoft.com/fwlink/?LinkID=708576
+    dest: "{{ windows_iot_core_download_path }}\\windows_10_iot_dashboard.exe"
+    force: no # will only download the file if it does not exist or the remote file has been modified more recently than the local file
+  tags:
+    - windows_iot_core
+    - windows_iot_core.download
+    - windows_iot_core.download.dashboard
+...

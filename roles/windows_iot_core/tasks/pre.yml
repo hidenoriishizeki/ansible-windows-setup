@@ -1,0 +1,28 @@
+---
+############################################################
+# prep tasks for windows_iot_core role
+############################################################
+
+- name: Role variable validation
+  assert: 
+    that: 
+      - ansible_user is defined
+      - windows_iot_core_download_path is defined
+  tags:
+    - windows_iot_core
+    - windows_iot_core.pre
+    - windows_iot_core.pre.validation
+    - windows_iot_core.download
+    - windows_iot_core.download.dashboard
+
+- name: Create download directory
+  win_file:
+    path: "{{ windows_iot_core_download_path }}"
+    state: directory
+  tags:
+    - windows_iot_core
+    - windows_iot_core.pre
+    - windows_iot_core.pre.downloaddir
+    - windows_iot_core.download
+    - windows_iot_core.download.dashboard
+...

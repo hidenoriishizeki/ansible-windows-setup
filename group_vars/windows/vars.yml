@@ -1,0 +1,5 @@
+---
+ansible_connection: winrm # windows connection type
+ansible_winrm_transport: basic # other authentication options can be found here: http://docs.ansible.com/ansible/latest/intro_windows.html
+ansible_winrm_server_cert_validation: ignore # due to selfsigned certificates configured on the WinRM listeners
+...
