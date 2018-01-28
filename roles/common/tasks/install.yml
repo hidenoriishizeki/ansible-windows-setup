@@ -6,7 +6,7 @@
 # win_updates will be fixed with ansible 2.5.x
 - name: Install windows updates
   win_updates:
-    category_names: ['SecurityUpdates','CriticalUpdates','UpdateRollups', 'Updates', 'DefinitionUpdates']
+    category_names: "{{ common_win_updates_category_names_list }}"
   notify: restart windows system
   register: windown_install_updates_result
   ignore_errors: yes # ToDo: remove after ansible 2.5.x has been released
@@ -31,10 +31,7 @@
   win_chocolatey:
     name: "{{ item }}"
     state: latest
-  with_items:
-    - firefox
-    - googlechrome
-    - visualstudiocode
+  with_items: "{{ common_win_chocolatey_software_list }}"
   tags:
     - common
     - common.install
